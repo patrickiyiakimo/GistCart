@@ -3,7 +3,7 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <div className="font-mont mt-40 text-center lg:ml-14 lg:flex">
+    <div className="font-mont mt-40 text-center mb-40 lg:ml-14 lg:flex">
       <div>
         <div>
           <h6 className="font-bold text-sm text-orange-300">
