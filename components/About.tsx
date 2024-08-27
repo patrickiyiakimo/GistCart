@@ -1,12 +1,12 @@
 import Image from "next/image";
 import React from "react";
 
-export default function About() {
+const About: React.FC = () => {
   return (
     <div className="font-mont mb-40">
       <div>
         <div className="flex w-full flex-col">
-          <div className=" divider divider-neutral text-3xl text-orange-300 font-bold">
+          <div className="divider divider-neutral text-3xl text-orange-300 font-bold">
             GlowCart
           </div>
           <h1 className="font-bold lg:text-6xl text-center mb-20">About Us</h1>
@@ -16,10 +16,10 @@ export default function About() {
         <div>
           <Image
             src="/images/undraw_data_reports_706v.png"
-            alt=""
+            alt="Data Reports"
             width={800}
             height={800}
-            className=" p-2 rounded-md"
+            className="p-2 rounded-md"
           />
         </div>
         <div>
@@ -31,11 +31,11 @@ export default function About() {
             aliquid veritatis id inventore laborum ipsum molestiae impedit
             suscipit commodi corrupti. Fuga.
           </p>
-          <div className="lg:flex">
+          <div className="md:ml-20 lg:flex">
             <div>
               <Image
                 src="/images/logoipsum-248.svg"
-                alt=""
+                alt="Company Logo"
                 width={200}
                 height={200}
                 className="bg-blue-900 mt-20 p-2 ml-10 md:ml-1 rounded-md"
@@ -50,7 +50,7 @@ export default function About() {
                 nulla ea esse omnis odio quibusdam numquam, quia repellendus
                 quod quo iure porro corporis.
               </p>
-              <div className=" flex">
+              <div className="flex">
                 <input
                   type="checkbox"
                   defaultChecked
@@ -61,7 +61,7 @@ export default function About() {
                   voluptatem!
                 </p>
               </div>
-              <div className=" flex mt-5 ">
+              <div className="flex mt-5">
                 <input
                   type="checkbox"
                   defaultChecked
@@ -72,7 +72,7 @@ export default function About() {
                   voluptatem!
                 </p>
               </div>
-              <div className=" flex mt-5 ">
+              <div className="flex mt-5">
                 <input
                   type="checkbox"
                   defaultChecked
@@ -92,4 +92,6 @@ export default function About() {
       </div>
     </div>
   );
-}
+};
+
+export default About;

@@ -1,7 +1,7 @@
-import Image from 'next/image';
-import React from 'react'
+import Image from "next/image";
+import React from "react";
 
-export default function Navbar() {
+const Navbar: React.FC = () => {
   return (
     <div className="navbar bg-opacity-10 backdrop-blur-lg font-mont p-5 fixed top-0 z-50">
       <div className="navbar-start">
@@ -24,7 +24,7 @@ export default function Navbar() {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow "
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             <li>
               <a>Home</a>
@@ -43,10 +43,10 @@ export default function Navbar() {
         <a className="btn btn-ghost text-xl">
           <Image
             src="/images/logoipsum-248.svg"
-            alt=""
+            alt="Logo"
             width={80}
             height={80}
-            className='bg-blue-900 p-2 rounded-md'
+            className="bg-blue-900 p-2 rounded-md"
           />
           GlowCart
         </a>
@@ -75,4 +75,6 @@ export default function Navbar() {
       </div>
     </div>
   );
-}
+};
+
+export default Navbar;

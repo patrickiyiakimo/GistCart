@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-const Hero = () => {
+const Hero: React.FC = () => {
   return (
     <div className="font-mont mt-40 text-center mb-40 lg:ml-14 lg:flex">
       <div>
@@ -11,12 +11,12 @@ const Hero = () => {
           </h6>
         </div>
         <section>
-          <h1 className="text-2xl lg:text-6xl font-bold w-4/4">
+          <h1 className="text-2xl md:text-4xl lg:text-6xl font-bold w-4/4">
             Discover Your Style Statement with
             <span className="text-orange-300"> GlowCart</span>
           </h1>
-          <p className=" lg:w-80 lg:ml-44 pt-5"> 
-            Explore luxury and sophistication with GlowCart exclusive
+          <p className="md:w-72 md:ml-72 md:pt-10 lg:w-80 lg:ml-44 pt-5">
+            Explore luxury and sophistication with GlowCart's exclusive
             fashion-forward collection
           </p>
         </section>
@@ -29,7 +29,7 @@ const Hero = () => {
       <div>
         <Image
           src="/images/undraw_empty_cart_co35.png"
-          alt=""
+          alt="GlowCart Shopping"
           width={800}
           height={800}
           className="mr-80 p-2 rounded-md"
