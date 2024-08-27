@@ -4,13 +4,11 @@ import React from "react";
 const About: React.FC = () => {
   return (
     <div className="font-mont mb-40">
-      <div>
-        <div className="flex w-full flex-col">
-          <div className="divider divider-neutral text-3xl text-orange-300 font-bold">
-            GlowCart
-          </div>
-          <h1 className="font-bold lg:text-6xl text-center mb-20">About Us</h1>
+      <div className="flex w-full flex-col">
+        <div className="divider divider-neutral text-3xl text-orange-300 font-bold">
+          GlowCart
         </div>
+        <h1 className="font-bold lg:text-6xl text-center mb-20">About Us</h1>
       </div>
       <div className="lg:flex">
         <div>
