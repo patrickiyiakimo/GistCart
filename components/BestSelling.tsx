@@ -51,7 +51,7 @@ const BestSelling: React.FC = () => {
     return matchesSearchTerm && matchesDescription && matchesPrice;
   });
 
-  // Get current products for pagination
+  //current products for pagination
   const indexOfLastProduct = currentPage * itemsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - itemsPerPage;
   const currentProducts = filteredProducts.slice(
