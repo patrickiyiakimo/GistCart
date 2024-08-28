@@ -77,40 +77,16 @@ const BestSelling: React.FC<BestSellingProps> = ({ addToCart }) => {
 
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
 
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
-  const handlePreviousPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
-
   const getPageNumbers = () => {
     const pageNumbers = [];
-    let startPage = Math.max(1, currentPage - 2);
-    let endPage = Math.min(totalPages, currentPage + 2);
-
-    if (currentPage <= 3) {
-      endPage = Math.min(5, totalPages);
-    }
-
-    if (currentPage > totalPages - 3) {
-      startPage = Math.max(1, totalPages - 4);
-    }
-
-    for (let i = startPage; i <= endPage; i++) {
+    for (let i = 1; i <= Math.min(5, totalPages); i++) {
       pageNumbers.push(i);
     }
-
     return pageNumbers;
   };
 
   return (
-    <div>
+    <div className="font-mont">
       <div className="flex w-full flex-col">
         <div className="divider divider-neutral text-3xl text-orange-300 font-bold">
           GlowCart
@@ -142,7 +118,7 @@ const BestSelling: React.FC<BestSellingProps> = ({ addToCart }) => {
           className="p-3 py-4 border-2 "
         />
       </div>
-      <div className="ml-28 md:ml-40 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="ml-20 md:ml-40 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
         {currentProducts.map((product) => (
           <div key={product.id} className="w-52 md:w-52 shadow-xl pl-5 pr-5">
             <Image
@@ -174,14 +150,7 @@ const BestSelling: React.FC<BestSellingProps> = ({ addToCart }) => {
         ))}
 
         {/* Pagination controls */}
-        <div className="flex justify-center mt-8">
-          <button
-            onClick={handlePreviousPage}
-            disabled={currentPage === 1}
-            className="bg-gray-300 hover:bg-gray-400 text-gray-700 rounded-lg md:px-3 py-2"
-          >
-            Previous
-          </button>
+        <div className="mb-40 mt-8">
           {getPageNumbers().map((number) => (
             <button
               key={number}
@@ -195,13 +164,6 @@ const BestSelling: React.FC<BestSellingProps> = ({ addToCart }) => {
               {number}
             </button>
           ))}
-          <button
-            onClick={handleNextPage}
-            disabled={currentPage === totalPages}
-            className="bg-gray-300 hover:bg-gray-400 text-gray-700 rounded-lg px-4 py-2"
-          >
-            Next
-          </button>
         </div>
       </div>
     </div>

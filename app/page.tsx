@@ -3,6 +3,7 @@
 import About from "@/components/About";
 import BestSelling from "@/components/BestSelling";
 import CartPage from "@/components/CartPage";
+import CartDetails from "@/components/CartPage/CartDetails";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
@@ -35,9 +36,13 @@ export default function Home() {
       </div>
       <div>
         <BestSelling addToCart={addToCart} />
-        <CartPage cart={cart} />
       </div>
-      <Footer />
+      <div>
+        <Footer />
+      </div>
+      {/* <div>
+        <CartDetails />
+      </div> */}
     </main>
   );
 }
