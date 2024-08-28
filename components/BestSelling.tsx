@@ -11,7 +11,18 @@ interface Product {
   description: string;
 }
 
-const BestSelling: React.FC = () => {
+interface CartItem {
+  id: number;
+  image: string;
+  name: string;
+  price: number;
+}
+
+interface BestSellingProps {
+  addToCart: (item: CartItem) => void;
+}
+
+const BestSelling: React.FC<BestSellingProps> = ({ addToCart }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -51,7 +62,12 @@ const BestSelling: React.FC = () => {
     return matchesSearchTerm && matchesDescription && matchesPrice;
   });
 
-  //current products for pagination
+  // Reset currentPage to 1 whenever filter terms change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, descriptionTerm, priceTerm]);
+
+  // Current products for pagination
   const indexOfLastProduct = currentPage * itemsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - itemsPerPage;
   const currentProducts = filteredProducts.slice(
@@ -94,7 +110,7 @@ const BestSelling: React.FC = () => {
   };
 
   return (
-    <div className="font-mont mb-40">
+    <div>
       <div className="flex w-full flex-col">
         <div className="divider divider-neutral text-3xl text-orange-300 font-bold">
           GlowCart
@@ -141,41 +157,52 @@ const BestSelling: React.FC = () => {
             <p className="text-red-500 font-bold pb-3 text-xl">
               ${product.price}
             </p>
-            <button className="bg-orange-500 hover:bg-orange-600 text-white whitespace-nowrap mb-5 rounded-lg px-10 py-3">
+            <button
+              onClick={() =>
+                addToCart({
+                  id: product.id,
+                  image: product.image,
+                  name: product.name,
+                  price: product.price,
+                })
+              }
+              className="bg-orange-500 hover:bg-orange-600 text-white whitespace-nowrap mb-5 rounded-lg px-10 py-3"
+            >
               Add to cart
             </button>
           </div>
         ))}
-      </div>
 
-      <div className="flex justify-center mt-8">
-        <button
-          onClick={handlePreviousPage}
-          disabled={currentPage === 1}
-          className="bg-gray-300 hover:bg-gray-400 text-gray-700 rounded-lg md:px-4 py-2 "
-        >
-          Previous
-        </button>
-        {getPageNumbers().map((number) => (
+        {/* Pagination controls */}
+        <div className="flex justify-center mt-8">
           <button
-            key={number}
-            onClick={() => setCurrentPage(number)}
-            className={`${
-              currentPage === number
-                ? "bg-orange-500 text-white"
-                : "bg-gray-300 text-gray-700"
-            } rounded-lg px-4 py-2 mx-1`}
+            onClick={handlePreviousPage}
+            disabled={currentPage === 1}
+            className="bg-gray-300 hover:bg-gray-400 text-gray-700 rounded-lg md:px-3 py-2"
           >
-            {number}
+            Previous
           </button>
-        ))}
-        <button
-          onClick={handleNextPage}
-          disabled={currentPage === totalPages}
-          className="bg-gray-300 hover:bg-gray-400 text-gray-700 rounded-lg px-4 py-2 "
-        >
-          Next
-        </button>
+          {getPageNumbers().map((number) => (
+            <button
+              key={number}
+              onClick={() => setCurrentPage(number)}
+              className={`${
+                currentPage === number
+                  ? "bg-orange-500 text-white"
+                  : "bg-gray-300 text-gray-700"
+              } rounded-lg px-3 py-2 mx-1`}
+            >
+              {number}
+            </button>
+          ))}
+          <button
+            onClick={handleNextPage}
+            disabled={currentPage === totalPages}
+            className="bg-gray-300 hover:bg-gray-400 text-gray-700 rounded-lg px-4 py-2"
+          >
+            Next
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+// import CartPage from "./CartPage";
 
 const Navbar: React.FC = () => {
   return (
@@ -108,6 +109,7 @@ const Navbar: React.FC = () => {
                 <a>Sidebar Item 2</a>
               </li>
             </ul>
+            {/* <CartPage /> */}
           </div>
         </div>
       </div>
