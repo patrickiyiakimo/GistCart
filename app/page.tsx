@@ -7,6 +7,7 @@ import CartDetails from "@/components/CartPage/CartDetails";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
+import WhyChooseUs from "@/components/WhyChooseUs";
 import { useState } from "react";
 
 interface CartItem {
@@ -36,6 +37,9 @@ export default function Home() {
       </div>
       <div>
         <BestSelling addToCart={addToCart} />
+      </div>
+      <div>
+        <WhyChooseUs />
       </div>
       <div>
         <Footer />
