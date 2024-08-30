@@ -10,6 +10,9 @@ import Navbar from "@/components/Navbar";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import { useState } from "react";
 import Faq from "@/components/Faq";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 interface CartItem {
   id: number;
@@ -48,6 +51,7 @@ export default function Home() {
       <div>
         <Footer />
       </div>
+      <ToastContainer />
       {/* <div>
         <CartDetails />
       </div> */}
