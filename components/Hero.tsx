@@ -32,7 +32,7 @@ const Hero: React.FC = () => {
           alt="GlowCart Shopping"
           width={800}
           height={800}
-          className="mr-80 p-2 rounded-md"
+          className="mt-5 md:ml-5 md:mt-5 lg:mt-0 lg:mr-80 lg:ml-0 p-2 rounded-t-full"
         />
       </div>
     </div>
