@@ -169,7 +169,7 @@ const BestSelling: React.FC<BestSellingProps> = ({ addToCart }) => {
           {currentProducts.map((product) => (
             <div key={product.id} className="w-60 md:w-52 shadow-xl pl-5 pr-5">
               <Image
-                src={product.image}
+                src="/images/skincare-one.jfif"
                 alt={product.name}
                 width={230}
                 height={230}
