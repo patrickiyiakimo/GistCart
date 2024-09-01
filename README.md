@@ -8,7 +8,6 @@ Scripts
 Folder Structure
 
 Example:
-
 Clone the repository:
 bash
 Copy code
