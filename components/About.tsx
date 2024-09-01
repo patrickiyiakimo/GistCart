@@ -17,7 +17,7 @@ const About: React.FC = () => {
             alt="Data Reports"
             width={800}
             height={800}
-            className="p-2 rounded-md"
+            className="p-2 md:ml-5 lg:rounded-s-full"
           />
         </div>
         <div>
