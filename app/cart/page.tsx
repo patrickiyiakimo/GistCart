@@ -3,6 +3,13 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { MdDelete } from "react-icons/md";
+import { IoCart } from "react-icons/io5";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+
+
+
 
 interface CartItem {
   id: number;
@@ -73,12 +80,16 @@ const CartPage: React.FC = () => {
 
   return (
     <div className="font-mont">
+      <Navbar />
       <div className="font-bold text-2xl md:text-6xl mt-36 text-center mb-20">
         <h1>Items Added To Your Cart</h1>
       </div>
 
       {cart.length === 0 ? (
-        <p className="text-center text-2xl">Your cart is empty</p>
+        <p className="flex justify-center items-center  md:text-4xl text-orange-400 font-semibold">
+          <IoCart className="w-40 h-40 md:w-72 md:h-72 text-orange-400" />
+          Your Cart is Empty
+        </p>
       ) : (
         <div className="container justify-center items-center flex">
           <div className="overflow-x-auto">
@@ -141,9 +152,9 @@ const CartPage: React.FC = () => {
                     <td>
                       <button
                         onClick={() => handleDelete(item)}
-                        className="btn btn-ghost btn-xs bg-red-500 text-white"
+                        className="btn text-red-500 w-20"
                       >
-                        Remove
+                        <MdDelete />
                       </button>
                     </td>
                   </tr>
@@ -163,6 +174,7 @@ const CartPage: React.FC = () => {
           </button>
         </div>
       </section>
+      <Footer />
     </div>
   );
 };

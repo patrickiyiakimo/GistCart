@@ -4,6 +4,8 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
+
+
 interface Product {
   id: number;
   name: string;
@@ -31,7 +33,7 @@ const BestSelling: React.FC<BestSellingProps> = ({ addToCart }) => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [descriptionTerm, setDescriptionTerm] = useState<string>("");
   const [priceTerm, setPriceTerm] = useState<string>("");
-  const [cart, setCart] = useState<CartItem[]>([]); // Change to track full cart items
+  const [cart, setCart] = useState<CartItem[]>([]); 
 
   const itemsPerPage = 9;
 
@@ -140,13 +142,6 @@ const BestSelling: React.FC<BestSellingProps> = ({ addToCart }) => {
           className="p-3 py-4 border-2"
         />
         <input
-          type="number"
-          placeholder="Search by max price..."
-          value={priceTerm}
-          onChange={(e) => setPriceTerm(e.target.value)}
-          className="p-3 py-4 border-2"
-        />
-        <input
           type="text"
           placeholder="Search by name..."
           value={searchTerm}
@@ -192,7 +187,6 @@ const BestSelling: React.FC<BestSellingProps> = ({ addToCart }) => {
                     ? "bg-gray-500 cursor-not-allowed"
                     : "bg-orange-500 hover:bg-orange-600"
                 } text-white whitespace-nowrap mb-5 rounded-lg px-10 py-3`}
-                disabled={cart.find((item) => item.id === product.id)}
               >
                 {cart.find((item) => item.id === product.id)
                   ? "In Cart"
