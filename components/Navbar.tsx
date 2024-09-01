@@ -76,7 +76,7 @@ const Navbar: React.FC = () => {
               <Link href="/brands">Brands</Link>
             </li>
             <li>
-              <label className="swap swap-rotate">
+              <label className="swap swap-rotate w-10">
                 <input
                   type="checkbox"
                   onChange={handleToggle}
@@ -94,7 +94,7 @@ const Navbar: React.FC = () => {
 
                 {/* moon icon */}
                 <svg
-                  className="swap-off mr-32 h-6 w-6 fill-current"
+                  className="swap-off  h-6 w-6 fill-current"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                 >
@@ -131,7 +131,7 @@ const Navbar: React.FC = () => {
             <Link href="/brands">Brands</Link>
           </li>
           <li>
-            <label className="swap swap-rotate">
+            <label className="swap swap-rotate w-10">
               <input
                 type="checkbox"
                 onChange={handleToggle}
@@ -149,7 +149,7 @@ const Navbar: React.FC = () => {
 
               {/* moon icon */}
               <svg
-                className="swap-off mr-32 h-6 w-6 fill-current"
+                className="swap-off h-6 w-6 fill-current"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
               >
