@@ -9,7 +9,7 @@ interface CartItem {
   image: string;
   name: string;
   price: number;
-  quantity: number; // Updated to accept different quantities
+  quantity: number;
 }
 
 const CartPage: React.FC = () => {
@@ -23,14 +23,10 @@ const CartPage: React.FC = () => {
 
   // Function to handle item removal
   const handleDelete = (item: CartItem) => {
-    // Filter out the item with the matching id
     const updatedCart = cart.filter((cartItem) => cartItem.id !== item.id);
-
-    // Update the state and local storage
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
 
-    // Notify user about the removed item
     toast.error(`${item.name} removed from cart`, {
       position: "top-right",
       autoClose: 5000,
@@ -43,15 +39,37 @@ const CartPage: React.FC = () => {
     });
   };
 
-  //decreasing cart function
+  // Function to decrease item quantity
   const handleDecrease = (item: CartItem) => {
-    console.log(item.id)
-  }
+    const updatedCart = cart.map((cartItem) => {
+      if (cartItem.id === item.id && cartItem.quantity > 1) {
+        return { ...cartItem, quantity: cartItem.quantity - 1 };
+      }
+      return cartItem;
+    });
 
-  //increasing cart function
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
+  // Function to increase item quantity
   const handleIncrease = (item: CartItem) => {
-    console.log(item.id)
-  }
+    const updatedCart = cart.map((cartItem) => {
+      if (cartItem.id === item.id) {
+        return { ...cartItem, quantity: cartItem.quantity + 1 };
+      }
+      return cartItem;
+    });
+
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
+  // Calculate total price
+  const totalPrice = cart.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
 
   return (
     <div className="font-mont">
@@ -65,7 +83,6 @@ const CartPage: React.FC = () => {
         <div className="container justify-center items-center flex">
           <div className="overflow-x-auto">
             <table className="table">
-              {/* head */}
               <thead className="bg-orange-400 text-white rounded-sm">
                 <tr>
                   <th>#</th>
@@ -77,7 +94,6 @@ const CartPage: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                {/* Map through the cart items */}
                 {cart.map((item, index) => (
                   <tr key={item.id}>
                     <td>{index + 1}</td>
@@ -99,12 +115,28 @@ const CartPage: React.FC = () => {
                     <td className="font-semibold whitespace-nowrap">
                       {item.name}
                     </td>
-                    {/* <td>{item.quantity}</td> */}
-                    <div className="mt-6 whitespace-nowrap">
-                      <button className="btn btn-xs" onClick={() => handleDecrease(item)}>-</button>
-                      <input type="number" value={item.quantity} className="w-10 mx-2 text-center overflow-hidden appearance-none"/>
-                      <button className="btn btn-xs" onClick={() => handleIncrease(item)}>+</button>
-                    </div>
+                    <td>
+                      <div className="flex items-center whitespace-nowrap">
+                        <button
+                          className="btn btn-xs"
+                          onClick={() => handleDecrease(item)}
+                        >
+                          -
+                        </button>
+                        <input
+                          type="number"
+                          value={item.quantity}
+                          readOnly
+                          className="w-10 mx-2 text-center overflow-hidden appearance-none"
+                        />
+                        <button
+                          className="btn btn-xs"
+                          onClick={() => handleIncrease(item)}
+                        >
+                          +
+                        </button>
+                      </div>
+                    </td>
                     <td>${item.price}</td>
                     <td>
                       <button
@@ -125,7 +157,7 @@ const CartPage: React.FC = () => {
         <div className="md:w-1/2 space-y-3">
           <h3 className="font-bold">Shopping Details</h3>
           <p>Total Items: {cart.length}</p>
-          <p>Total Price: $0.00</p>
+          <p>Total Price: ${totalPrice.toFixed(2)}</p>
           <button className="btn bg-orange-500 text-white">
             Proceed Checkout
           </button>
