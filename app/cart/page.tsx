@@ -2,13 +2,14 @@
 
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 interface CartItem {
   id: number;
   image: string;
   name: string;
   price: number;
-  quantity: 1;
+  quantity: number; // Updated to accept different quantities
 }
 
 const CartPage: React.FC = () => {
@@ -21,16 +22,40 @@ const CartPage: React.FC = () => {
   }, []);
 
   // Function to handle item removal
-  const handleRemove = (id: number) => {
+  const handleDelete = (item: CartItem) => {
     // Filter out the item with the matching id
-    const updatedCart = cart.filter((item) => item.id !== id);
+    const updatedCart = cart.filter((cartItem) => cartItem.id !== item.id);
+
+    // Update the state and local storage
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
+
+    // Notify user about the removed item
+    toast.error(`${item.name} removed from cart`, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
+
+  //decreasing cart function
+  const handleDecrease = (item: CartItem) => {
+    console.log(item.id)
+  }
+
+  //increasing cart function
+  const handleIncrease = (item: CartItem) => {
+    console.log(item.id)
+  }
 
   return (
     <div className="font-mont">
-      <div className="font-bold text-6xl mt-36 text-center mb-20">
+      <div className="font-bold text-2xl md:text-6xl mt-36 text-center mb-20">
         <h1>Items Added To Your Cart</h1>
       </div>
 
@@ -45,6 +70,7 @@ const CartPage: React.FC = () => {
                 <tr>
                   <th>#</th>
                   <th>Product</th>
+                  <th>Name</th>
                   <th>Quantity</th>
                   <th>Price</th>
                   <th>Action</th>
@@ -68,14 +94,21 @@ const CartPage: React.FC = () => {
                             />
                           </div>
                         </div>
-                        <span>{item.name}</span>
                       </div>
                     </td>
-                    <td>{item.quantity}</td>
+                    <td className="font-semibold whitespace-nowrap">
+                      {item.name}
+                    </td>
+                    {/* <td>{item.quantity}</td> */}
+                    <div className="mt-6 whitespace-nowrap">
+                      <button className="btn btn-xs" onClick={() => handleDecrease(item)}>-</button>
+                      <input type="number" value={item.quantity} className="w-10 mx-2 text-center overflow-hidden appearance-none"/>
+                      <button className="btn btn-xs" onClick={() => handleIncrease(item)}>+</button>
+                    </div>
                     <td>${item.price}</td>
                     <td>
                       <button
-                        onClick={() => handleRemove(item.id)}
+                        onClick={() => handleDelete(item)}
                         className="btn btn-ghost btn-xs bg-red-500 text-white"
                       >
                         Remove
@@ -88,6 +121,16 @@ const CartPage: React.FC = () => {
           </div>
         </div>
       )}
+      <section className="my-12 flex flex-col md:flex-row justify-between items-start ml-10 md:ml-20 lg:ml-80">
+        <div className="md:w-1/2 space-y-3">
+          <h3 className="font-bold">Shopping Details</h3>
+          <p>Total Items: {cart.length}</p>
+          <p>Total Price: $0.00</p>
+          <button className="btn bg-orange-500 text-white">
+            Proceed Checkout
+          </button>
+        </div>
+      </section>
     </div>
   );
 };
