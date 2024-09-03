@@ -8,7 +8,7 @@ import { IoCart } from "react-icons/io5";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
-
+ import { FaArrowRight } from "react-icons/fa6";
 
 
 
@@ -94,6 +94,11 @@ const CartPage: React.FC = () => {
       ) : (
         <div className="container justify-center items-center flex">
           <div className="overflow-x-auto">
+            <p className="md:hiddenn flex ml-10">
+              Slide through
+              <FaArrowRight className="ml-10 animate-bounce text-orange-500 " />
+            </p>
+
             <table className="table">
               <thead className="bg-orange-400 text-white rounded-sm">
                 <tr>

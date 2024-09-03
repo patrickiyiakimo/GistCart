@@ -8,6 +8,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      keyframes: {
+        bounce: {
+          "0%, 100%": { transform: "scale(1)" },
+          "50%": { transform: "scale(2.2)" },
+        },
+      },
+      animation: {
+        bounce: "bounce 1s infinite",
+      },
       fontFamily: {
         mont: ["Montserrat", "sans-serif"],
       },
