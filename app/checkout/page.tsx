@@ -2,9 +2,35 @@
 
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import React from "react";
+import React, { useState } from "react";
 
 export default function Page() {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [currencySelected, setCurrencySelected] = useState<boolean>(false);
+
+  const handlePayment = () => {
+    setIsLoading(true);
+    // Simulate payment process
+    setTimeout(() => {
+      setIsLoading(false);
+      // Handle successful payment
+      const modal = document.getElementById("my_modal_3") as HTMLDialogElement;
+      if (modal) {
+        modal.showModal();
+      }
+    }, 2000);
+  };
+
+  const handleCurrencyChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    if (event.target.value) {
+      setCurrencySelected(true);
+    } else {
+      setCurrencySelected(false);
+    }
+  };
+
   return (
     <div className="font-mont">
       <Navbar />
@@ -32,31 +58,14 @@ export default function Page() {
           <div className="mt-4">
             <input type="checkbox" id="terms" className="hidden peer" />
             <label htmlFor="terms" className="flex items-center cursor-pointer">
-              <span className="w-5 h-5 border-2 border-black rounded-sm flex items-center justify-center peer-checked:bg-orange-400">
-                <svg
-                  className="hidden peer-checked:block w-4 h-4 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-              </span>
+              <input type="checkbox" defaultChecked className="checkbox" />
               <p className="ml-2">
-                I agree to GlowCart
+                I agree to GlowCart{" "}
                 <span className="text-orange-400 cursor-pointer text-sm md:text-xl lg:text-xl">
-                  {" "}
                   terms and conditions
                 </span>{" "}
-                together with its
+                together with its{" "}
                 <span className="text-orange-400 cursor-pointer">
-                  {" "}
                   privacy policy
                 </span>
               </p>
@@ -68,30 +77,85 @@ export default function Page() {
               htmlFor="promotions"
               className="flex items-center cursor-pointer"
             >
-              <span className="w-5 h-5 border-2 border-black rounded-sm flex items-center justify-center peer-checked:bg-orange-400">
-                <svg
-                  className="hidden peer-checked:block w-4 h-4 text-green-500"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M5 13l4 4L19 7"
-                  ></path>
-                </svg>
-              </span>
+              <input type="checkbox" defaultChecked className="checkbox" />
               <p className="ml-2">
-                I would like to receive promotional/marketing emails
+                I would like to receive promotional / marketing emails
               </p>
             </label>
+          </div>
+          <div className="mt-10 ">
+            <label>Delivery Date:</label>
+            <input
+              type="date"
+              className="py-4 px-20 md:px-40 md:ml-5 md:mt-5 border-2 border-black rounded-md"
+            />
+            <br />
+            <label>Payment Method:</label>
+            <select
+              className="py-4 md:px-20  md:ml-5 md:mt-5 border-2 border-black rounded-md"
+              onChange={handleCurrencyChange}
+            >
+              <option value="">Select Currency</option>
+              <option value="USD">USD $</option>
+              <option value="EUR">Euro EUR €</option>
+              <option value="GBP">British Pound Sterling GBP £</option>
+              <option value="JPY">Japanese Yen JPY ¥</option>
+              <option value="NGN">Nigerian Naira NGN ₦</option>
+              <option value="AUD">Australian Dollar AUD A$</option>
+              <option value="CAD">Canadian Dollar CAD C$</option>
+              <option value="CHF">Swiss Franc CHF</option>
+              <option value="CNY">Chinese Yuan CNY ¥</option>
+              <option value="KES">Kenyan Shilling KES KSh</option>
+              <option value="MXN">Mexican Peso MXN $</option>
+              <option value="SGD">Singapore Dollar SGD S$</option>
+              <option value="HKD">Hong Kong Dollar HKD HK$</option>
+              <option value="NZD">New Zealand Dollar NZD NZ$</option>
+              <option value="KRW">South Korean Won KRW ₩</option>
+              <option value="SEK">Swedish Krona SEK kr</option>
+              <option value="NOK">Norwegian Krone NOK kr</option>
+              <option value="DKK">Danish Krone DKK kr</option>
+              <option value="TRY">Turkish Lira TRY ₺</option>
+              <option value="AED">United Arab Emirates Dirham AED د.إ</option>
+              <option value="INR">Indian Rupee INR ₹</option>
+              <option value="BRL">Brazilian Real BRL R$</option>
+              <option value="ZAR">South African Rand ZAR R</option>
+              <option value="RUB">Russian Ruble RUB ₽</option>
+            </select>
+          </div>
+          <div className="mt-10">
+            <button
+              onClick={handlePayment}
+              disabled={!currencySelected || isLoading}
+              className={`px-24 py-5 rounded-md border-none text-white hover:bg-orange-400 bg-orange-500 flex justify-center items-center ${
+                (!currencySelected || isLoading) &&
+                "cursor-not-allowed opacity-50"
+              }`}
+            >
+              {isLoading ? (
+                <span className="loading loading-dots loading-md"></span>
+              ) : (
+                "Pay"
+              )}
+            </button>
           </div>
         </section>
       </div>
       <Footer />
+
+      <dialog id="my_modal_3" className="modal">
+        <div className="modal-box">
+          <form method="dialog">
+            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+              ✕
+            </button>
+          </form>
+          <h3 className="font-bold text-lg">Payment Successful!</h3>
+          <p className="py-4">
+            Your payment has been processed successfully. Thank you for your
+            purchase!
+          </p>
+        </div>
+      </dialog>
     </div>
   );
 }
