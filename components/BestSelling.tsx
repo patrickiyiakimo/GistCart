@@ -124,7 +124,7 @@ const BestSelling: React.FC<BestSellingProps> = ({ addToCart }) => {
   };
 
   return (
-    <div className="font-mont">
+    <div className="font-mont" id="products">
       <div className="flex w-full flex-col">
         <div className="divider divider-neutral text-3xl text-orange-300 font-bold">
           GlowCart

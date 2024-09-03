@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Faq() {
   return (
-    <div className="font-mont mb-20">
+    <div className="font-mont mb-20" id="faq">
       <div className="flex w-full flex-col">
         <div className="divider divider-neutral text-3xl text-orange-300 font-bold">
           GlowCart

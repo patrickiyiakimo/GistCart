@@ -64,16 +64,16 @@ const Navbar: React.FC = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             <li>
-              <Link href="/">Home</Link>
+              <a href="/">Home</a>
             </li>
             <li>
-              <Link href="/about">About Us</Link>
+              <a href="#about">About Us</a>
             </li>
             <li>
-              <Link href="/products">Products</Link>
+              <a href="#products">Products</a>
             </li>
             <li>
-              <Link href="/brands">Brands</Link>
+              <a href="#faq">Faq</a>
             </li>
             <li>
               <label className="swap swap-rotate w-10">
@@ -119,16 +119,16 @@ const Navbar: React.FC = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <Link href="/">Home</Link>
+            <a href="/">Home</a>
           </li>
           <li>
-            <Link href="/about">About Us</Link>
+            <a href="#about">About Us</a>
           </li>
           <li>
-            <Link href="/products">Products</Link>
+            <a href="#products">Products</a>
           </li>
           <li>
-            <Link href="/brands">Brands</Link>
+            <a href="#faq">Faq</a>
           </li>
           <li>
             <label className="swap swap-rotate w-10">
@@ -159,69 +159,69 @@ const Navbar: React.FC = () => {
           </li>
         </ul>
       </div>
-       <div className="navbar-end">
-         <div className="drawer drawer-end">
-           <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-           <div className="drawer-content">
-             <label
-               htmlFor="my-drawer-4"
-               className="ml-28 drawer-button btn bg-orange-500 text-white hover:text-orange-500"
-             >
-               <svg
-                 xmlns="http://www.w3.org/2000/svg"
-                 fill="none"
-                 viewBox="0 0 24 24"
-                 strokeWidth="1.5"
-                 stroke="currentColor"
-                 className="size-6"
-               >
-                 <path
-                   strokeLinecap="round"
-                   strokeLinejoin="round"
-                   d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
-                 />
-               </svg>
-               {cart.length > 0 && (
-                 <span className="badge badge-secondary absolute top-0 right-0 text-xs p-1 bg-red-500 text-white">
-                   {cart.length}
-                 </span>
-               )}
-             </label>
-           </div>
-           <div className="drawer-side">
-             <label
-               htmlFor="my-drawer-4"
-               aria-label="close sidebar"
-               className="drawer-overlay"
-             ></label>
-             <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
-               <li>
-                 <h2 className="text-xl font-bold">Cart Items</h2>
+      <div className="navbar-end">
+        <div className="drawer drawer-end">
+          <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+          <div className="drawer-content">
+            <label
+              htmlFor="my-drawer-4"
+              className="ml-28 drawer-button btn bg-orange-500 text-white hover:text-orange-500"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="size-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+                />
+              </svg>
+              {cart.length > 0 && (
+                <span className="badge badge-secondary absolute top-0 right-0 text-xs p-1 bg-red-500 text-white">
+                  {cart.length}
+                </span>
+              )}
+            </label>
+          </div>
+          <div className="drawer-side">
+            <label
+              htmlFor="my-drawer-4"
+              aria-label="close sidebar"
+              className="drawer-overlay"
+            ></label>
+            <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+              <li>
+                <h2 className="text-xl font-bold">Cart Items</h2>
 
-                 <Image
-                   src="/images/undraw_shopping_app_flsj.png"
-                   alt=""
-                   width={230}
-                 height={230}
-                   className="h-48 object-cover cursor-none rounded-sm mt-40"
-                 />
-                 <div className="flex w-full flex-col">
-                   <div className="divider divider-neutral font-bold ">
-                   GlowCart
-                   </div>
-                 </div>
+                <Image
+                  src="/images/undraw_shopping_app_flsj.png"
+                  alt=""
+                  width={230}
+                  height={230}
+                  className="h-48 object-cover cursor-none rounded-sm mt-40"
+                />
+                <div className="flex w-full flex-col">
+                  <div className="divider divider-neutral font-bold ">
+                    GlowCart
+                  </div>
+                </div>
 
-                 <Link
-                   href="/cart"
-                 className="px-full bg-orange-500 text-white hover:bg-orange-600"
+                <Link
+                  href="/cart"
+                  className="px-full bg-orange-500 text-white hover:bg-orange-600"
                 >
-                   View Cart
-               </Link>
-               </li>
-             </ul>
-           </div>
-         </div> 
-        </div> 
+                  View Cart
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

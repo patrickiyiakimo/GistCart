@@ -3,7 +3,7 @@ import React from "react";
 
 const About: React.FC = () => {
   return (
-    <div className="font-mont mb-40">
+    <div className="font-mont mb-40" id="about">
       <div className="flex w-full flex-col">
         <div className="divider divider-neutral text-3xl text-orange-300 font-bold">
           GlowCart
