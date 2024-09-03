@@ -7,6 +7,7 @@ import { MdDelete } from "react-icons/md";
 import { IoCart } from "react-icons/io5";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Link from "next/link";
 
 
 
@@ -169,9 +170,11 @@ const CartPage: React.FC = () => {
           <h3 className="font-bold">Shopping Details</h3>
           <p>Total Items: {cart.length}</p>
           <p>Total Price: ${totalPrice.toFixed(2)}</p>
-          <button className="btn bg-orange-500 text-white">
-            Proceed Checkout
-          </button>
+          <Link href="checkout">
+            <button className="btn bg-orange-500 text-white">
+              Proceed Checkout
+            </button>
+          </Link>
         </div>
       </section>
       <Footer />
