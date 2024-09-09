@@ -165,7 +165,7 @@ const BestSelling: React.FC<BestSellingProps> = ({ addToCart }) => {
           ))}
         </div>
       ) : (
-        <div className="ml-20 md:ml-40 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="ml-20 md:ml-40 grid grid-cols-1 sm:grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {currentProducts.map((product) => (
             <div key={product.id} className="w-60 md:w-52 shadow-xl pl-5 pr-5">
               <Image
